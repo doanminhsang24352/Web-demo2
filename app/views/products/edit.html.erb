@@ -1,7 +1,8 @@
 <% content_for :title, "Editing product" %>
 
 <h1>Editing product</h1>
-
+<%= render "form", product: @product %>
+<%= link_to "Cancel", @product %>
 <%= render "form", product: @product %>
 
 <br>

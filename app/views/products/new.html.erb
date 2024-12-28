@@ -1,11 +1,17 @@
 <% content_for :title, "New product" %>
-
+<h1> new new </h1>
 <h1>New product</h1>
-
 <%= render "form", product: @product %>
+<%= link_to "Cancel", products_path %>
+<%= form_with model: @product do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Back to products", products_path %>
-</div>
+  <div>
+    <%= form.submit %>
+    
+  </div>
+  
+<% end %>
