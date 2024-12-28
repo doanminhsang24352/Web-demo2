@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-
+  allow_unauthenticated_access only: %i[ index show ]
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    # @product is already set by the before_action
+    
+    @product = Product.find(params[:id])
   end
 
   # GET /products/new
@@ -57,4 +58,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :price, :tag)  # Adjust according to your model attributes
   end
+  allow_unauthenticated_access only: %i[ index show ]
+
+  def product_params
+    params.expect(product: [ :name, :description ])
+  end
+
 end

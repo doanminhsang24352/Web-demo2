@@ -10,3 +10,9 @@
   <h1><%= @product.price %></h1>
   <h1><%= @product.tag %></h1>
 <% end %>
+<% cache @product do %>
+  <h1><%= @product.name %></h1>
+  <%= @product.description %>
+<% end %>
+
+
