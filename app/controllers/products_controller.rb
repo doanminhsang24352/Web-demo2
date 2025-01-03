@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  allow_unauthenticated_access only: %i[ index show ]
+  allow_unauthenticated_access only: %i[index show]
+
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -8,7 +9,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    
     @product = Product.find(params[:id])
   end
 
@@ -56,13 +56,6 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through
   def product_params
-    params.require(:product).permit(:name, :price, :tag)  # Adjust according to your model attributes
+    params.require(:product).permit(:name, :price, :tag, :description, :featured_image, :inventory_count)
   end
-  allow_unauthenticated_access only: %i[ index show ]
-
-  def product_params
-    params.expect(product: [ :name, :description, :featured_image, :inventory_count ])
-  end
-
-
 end

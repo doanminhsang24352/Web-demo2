@@ -11,42 +11,44 @@
     </div>
   <% end %>
 
+  <!-- Product Name -->
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
+  <!-- Product Price -->
   <div>
     <%= form.label :price, style: "display: block" %>
     <%= form.text_field :price %>
   </div>
 
+  <!-- Product Tag -->
   <div>
     <%= form.label :tag, style: "display: block" %>
     <%= form.text_field :tag %>
   </div>
 
-  <div>
-    <%= form.label :string, style: "display: block" %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <!-- Product Description -->
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_text_area :description %>
   </div>
 
+  <!-- Product Inventory Count -->
   <div>
-    <%= form.submit %>
-    <div>
     <%= form.label :inventory_count, style: "display: block" %>
     <%= form.number_field :inventory_count %>
   </div>
 
+  <!-- Featured Image Upload -->
   <div>
-    <%= form.submit %>
+    <%= form.label :featured_image, "Upload Image", style: "display: block" %>
+    <%= form.file_field :featured_image %>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <%= form.submit "Save" %>
   </div>
 <% end %>

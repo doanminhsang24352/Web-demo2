@@ -1,19 +1,22 @@
 <h1><%= @product.name %></h1>
 
+<p><strong>Tag:</strong> <%= @product.tag %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
+
+<% if @product.featured_image.attached? %>
+  <p><strong>Image:</strong></p>
+  <%= image_tag @product.featured_image %>
+<% else %>
+  <p>No image uploaded</p>
+<% end %>
+
+<p><strong>Description:</strong></p>
+<%= @product.description %>
+
+<br>
+
 <%= link_to "Back", products_path %>
 <% if authenticated? %>
   <%= link_to "Edit", edit_product_path(@product) %>
   <%= button_to "Destroy", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
 <% end %>
-<% cache @product do %>
-  <h1><%= @product.name %></h1>
-  <h1><%= @product.price %></h1>
-  <h1><%= @product.tag %></h1>
-<% end %>
-<% cache @product do %>
-  <h1><%= @product.name %></h1>
-  <%= @product.description %>
-<% end %>
-<%= render "inventory", product: @product %>
-
-
