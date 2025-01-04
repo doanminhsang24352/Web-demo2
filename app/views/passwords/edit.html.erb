@@ -1,0 +1,29 @@
+<%= form_with url: password_path(params[:token]), method: :put, class: "form__content" do |form| %>
+  <h1 class="form__title">Update your password</h1>
+
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+
+  <div class="form__div">
+      <div class="form__icon">
+          <i class='bx bx-lock'></i>
+      </div>
+
+      <div class="form__div-input">
+          <%= form.label :password, class: "form__label" %>
+          <%= form.password_field :password, required: true, autocomplete: "new-password", class: "form__input", placeholder: "Enter new password", maxlength: 72 %>
+      </div>
+  </div>
+
+  <div class="form__div">
+      <div class="form__icon">
+          <i class='bx bx-lock-alt'></i>
+      </div>
+
+      <div class="form__div-input">
+          <%= form.label :password_confirmation, class: "form__label" %>
+          <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form__input", placeholder: "Repeat new password", maxlength: 72 %>
+      </div>
+  </div>
+
+  <input type="submit" class="form__button" value="Save">
+<% end %>
